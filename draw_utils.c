@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: bohchoi <bohchoi@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/06 15:55:38 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:22:08 by bohchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,5 @@ int	draw_texture(int x, t_dda *dda, t_data *data)
 			color = 0x000000;
 		my_mlx_pixel_put(data, x, y, color);
 	}
+	return (0);
 }

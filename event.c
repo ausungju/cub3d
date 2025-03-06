@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: bohchoi <bohchoi@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:34:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/02 03:23:20 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:22:34 by bohchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int	move_envet(int key_code, t_data *data)
 			- data->player.dir.x * 0.05)] != '1')
 			data->player.point.x -= data->player.dir.x * 0.05;
 	}
-	else
-		return (0);
+	return (0);
 }
 
 int	key_event(int key_code, t_data *data)
