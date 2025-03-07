@@ -6,7 +6,7 @@
 #    By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 03:10:13 by seongkim          #+#    #+#              #
-#    Updated: 2025/03/07 20:43:49 by seongkim         ###   ########.fr        #
+#    Updated: 2025/03/08 06:26:27 by seongkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,30 +14,33 @@ CC = cc
 # CFLAGS = -Wall -Wextra -Werror -
 CFLAGS = -g
 
-LFLAGS = -Lmlx_linux -lmlx_Linux -Llibft -lft -lXext -lX11 -lm -lz
+LFLAGS = -Llib/mlx_linux -lmlx_Linux -Llib/libft -lft -lXext -lX11 -lm -lz
 INCLUDE = -Imlx_linux
 NAME = cub3d
 
 LIB_DIR = \
-	libft		\
-	mlx_linux
+	lib/libft		\
+	lib/mlx_linux
 
 LIB_A = $(patsubst %,%.a,$(LIB_DIR))
 
 
 MANDATORY_SRCS = \
-	draw/draw_map.c		\
-	draw/draw_cam.c		\
-	draw/draw_utils.c	\
+	src/draw/draw_map.c			\
+	src/draw/draw_cam.c			\
+	src/draw/draw_utils.c		\
 	\
-	parsing/init.c		\
-	parsing/texture.c	\
+	src/parsing/init_main.c		\
+	src/parsing/parameter.c		\
+	src/parsing/parse_file.c	\
+	src/parsing/parse_map.c		\
+	src/parsing/utils.c			\
 	\
-	utils/ft_math.c		\
-	utils/utils.c		\
+	src/utils/ft_math.c			\
+	src/utils/utils.c			\
 	\
-	event.c				\
-	main.c
+	src/event.c					\
+	src/main.c
 
 MANDATORY_OBJS = $(patsubst %.c,%.o,$(MANDATORY_SRCS))
 

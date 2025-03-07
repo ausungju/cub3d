@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/07 21:17:54 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/08 05:53:11 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void	draw_wall(int x, t_fpoint pos, t_data *data)
 			dda.map.y += dda.step.y;
 			dda.side = 1;
 		}
-		if (data->map[dda.map.y][dda.map.x] == '1')
+		if (dda.map.y < 0 || dda.map.x < 0 || \
+			data->map[dda.map.y][dda.map.x] == '1')
 			hit = 1;
 	}
 	dda_wall(x, &dda, data);

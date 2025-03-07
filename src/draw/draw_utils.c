@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/07 21:17:56 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/08 05:59:45 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ unsigned int	get_texture_color(int x, int y, int num, t_data *data)
 int	select_texture(t_dda *dda)
 {
 	if (dda->side == 0 && dda->step.x > 0)
-		return (0);
+		return (EA);
 	if (dda->side == 0 && dda->step.x < 0)
-		return (1);
+		return (WE);
 	if (dda->step.y > 0)
-		return (2);
+		return (NO);
 	return (3);
 }
 
@@ -71,14 +71,14 @@ int	draw_texture(int x, t_dda *dda, t_data *data)
 	{
 		tex_y = (int)draw_tex.tex_pos & (data->texture[draw_tex.num]->y - 1);
 		if (y < dda->draw_start)
-			color = 0x000000;
+			color = data->ceiling;
 		else if (y >= dda->draw_start && y <= dda->draw_end)
 		{
 			draw_tex.tex_pos += draw_tex.step;
 			color = get_texture_color(dda->tex_x, tex_y, draw_tex.num, data);
 		}
 		else
-			color = 0x222222;
+			color = data->floor;
 		my_mlx_pixel_put(data, x, y, color);
 		++y;
 	}

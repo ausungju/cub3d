@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:34:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/07 21:09:35 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/08 06:32:06 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,24 @@ void	re_draw(t_data *data)
 	draw_cam(data);
 	draw_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+}
+
+int	event_time(t_data *data)
+{
+	t_time	time;
+	int		ms;
+
+	if (gettimeofday(&time, NULL))
+		parse_error(data);
+	ms = (long)(time.tv_sec * MS) - (long)(data->time.tv_sec * MS);
+	ms += (long)(time.tv_usec / MS) - (long)(data->time.tv_usec / MS);
+	if (ms > 5)
+	{
+		data->time.tv_sec = time.tv_sec;
+		data->time.tv_usec = time.tv_usec;
+		return (0);
+	}
+	return (1);
 }
 
 int	move_envet(int key_code, t_data *data)
@@ -46,6 +64,8 @@ int	key_event(int key_code, t_data *data)
 {
 	if (key_code == 65307)
 		call_exit(data);
+	if (event_time(data))
+		return (0);
 	if (key_code == 65361)
 	{
 		rotate(&data->player.dir, -1);

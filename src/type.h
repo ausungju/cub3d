@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   type.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/07 21:18:44 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/08 06:25:03 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef TYPE_H
+# define TYPE_H
 
-# include <stdio.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <time.h>
-# include <errno.h>
-# include <math.h>
-# include "libft/libft.h"
-# include "mlx_linux/mlx.h"
+# define NO			0
+# define SO			1
+# define WE			2
+# define EA			3
+# define FA			4
+# define F			5
+# define C			6
 
 # define WIDTH		1600
 # define HEIGHT		1200
@@ -33,6 +32,13 @@
 # define W_COLOR	0x00FF00
 
 # define PI			3.14159265358979323846
+
+# define TRUE		1
+# define FALSE		0
+
+# define MS			1000
+
+typedef struct timeval	t_time;
 
 typedef struct s_fpoint
 {
@@ -62,6 +68,7 @@ typedef struct s_player
 	t_fpoint	point;
 	t_fpoint	dir;
 	t_fpoint	plane;
+	char		char_dir;
 }	t_player;
 
 typedef struct s_draw_tex
@@ -90,58 +97,20 @@ typedef struct s_dda
 typedef struct s_cub3d
 {
 	t_player	player;
-	t_tex_info	*texture[5];
+	t_tex_info	**texture;
 	void		*mlx;
 	void		*win;
 	void		*img;
 	char		*addr;
 	char		**map;
-	char		map_x;
-	char		map_y;
+	int			*map_x;
+	int			map_y;
 	int			bits_pixel;
 	int			line_length;
 	int			endian;
-
+	int			floor;
+	int			ceiling;
+	t_time		time;
 }	t_data;
-
-void			draw_map(t_data *data);
-
-// draw_cam.c
-void			set_dda_wall_var(int x, t_fpoint	pos, t_data *data, \
-					t_dda *dda);
-void			dda_wall(int x, t_dda *dda, t_data *data);
-void			draw_wall(int x, t_fpoint pos, t_data *data);
-void			draw_cam(t_data *data);
-
-// draw_utils.c
-void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void			set_dda_var_with_raydir(t_fpoint rayDir, t_fpoint pos, \
-					t_dda *dda);
-int				draw_texture(int x, t_dda *dda, t_data *data);
-unsigned int	get_texture_color(int x, int y, int num, t_data *data);
-
-// event.c
-void			re_draw(t_data *data);
-int				move_envet(int key_code, t_data *data);
-int				key_event(int key_code, t_data *data);
-
-// ft_math.c
-void			copy_fpoint(t_fpoint *f1, t_fpoint *f2);
-void			copy_point(t_point *f1, t_point *f2);
-double			rad(double angle);
-void			rotate(t_fpoint *point, double angle);
-double			get_deg(t_fpoint *dir);
-
-// mlx_func.c
-t_data			*init_data(int argc, char **argv);
-void			parse_argv(char *file_name, t_data *data);
-void			point_locate_map(t_point *dest, t_fpoint *point);
-
-t_fpoint		*get_player_point(t_fpoint *point, int val, t_data *data);
-void			get_map_size(t_data *data);
-void			parse_error(t_data *data);
-int				call_exit(t_data *data);
-
-void			init_textures(t_data *data);
 
 #endif
