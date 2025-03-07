@@ -6,11 +6,35 @@
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/07 13:11:39 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/07 21:17:54 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
+
+void	set_dda_var_with_raydir(t_fpoint rayDir, t_fpoint pos, t_dda *dda)
+{
+	if (rayDir.x < 0)
+	{
+		dda->step.x = -1;
+		dda->side_dist.x = (pos.x - dda->map.x) * dda->delta_dist.x;
+	}
+	else
+	{
+		dda->step.x = 1;
+		dda->side_dist.x = (dda->map.x + 1.0 - pos.x) * dda->delta_dist.x;
+	}
+	if (rayDir.y < 0)
+	{
+		dda->step.y = -1;
+		dda->side_dist.y = (pos.y - dda->map.y) * dda->delta_dist.y;
+	}
+	else
+	{
+		dda->step.y = 1;
+		dda->side_dist.y = (dda->map.y + 1.0 - pos.y) * dda->delta_dist.y;
+	}
+}
 
 void	set_dda_wall_var(int x, t_fpoint pos, t_data *data, t_dda *dda)
 {
@@ -35,13 +59,10 @@ void	dda_wall(int x, t_dda *dda, t_data *data)
 		dda->perp_wall_dist = (dda->side_dist.x - dda->delta_dist.x);
 	else
 		dda->perp_wall_dist = (dda->side_dist.y - dda->delta_dist.y);
-		
 	dda->line_weight = (int)((double)HEIGHT / dda->perp_wall_dist);
-	
 	dda->draw_start = -dda->line_weight / 2 + HEIGHT / 2;
 	if (dda->draw_start < 0)
 		dda->draw_start = 0;
-
 	dda->draw_end = dda->line_weight / 2 + HEIGHT / 2;
 	if (dda->draw_end >= HEIGHT)
 		dda->draw_end = HEIGHT - 1;
@@ -78,7 +99,7 @@ void	draw_wall(int x, t_fpoint pos, t_data *data)
 void	draw_cam(t_data *data)
 {
 	t_fpoint	pos;
-	int		 	x;
+	int			x;
 
 	get_player_point(&pos, 1, data);
 	x = 0;

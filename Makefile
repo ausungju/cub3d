@@ -6,7 +6,7 @@
 #    By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 03:10:13 by seongkim          #+#    #+#              #
-#    Updated: 2025/03/05 20:04:50 by seongkim         ###   ########.fr        #
+#    Updated: 2025/03/07 20:43:49 by seongkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,18 @@ LIB_A = $(patsubst %,%.a,$(LIB_DIR))
 
 
 MANDATORY_SRCS = \
-	main.c			\
-	draw_map.c		\
-	draw_cam.c		\
-	draw_utils.c	\
-	event.c			\
-	mlx_func.c		\
-	texture.c		\
-	ft_math.c
+	draw/draw_map.c		\
+	draw/draw_cam.c		\
+	draw/draw_utils.c	\
+	\
+	parsing/init.c		\
+	parsing/texture.c	\
+	\
+	utils/ft_math.c		\
+	utils/utils.c		\
+	\
+	event.c				\
+	main.c
 
 MANDATORY_OBJS = $(patsubst %.c,%.o,$(MANDATORY_SRCS))
 
