@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/06 15:48:11 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/07 13:11:39 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	set_dda_wall_var(int x, t_fpoint pos, t_data *data, t_dda *dda)
 	copy_fpoint(&dda->pos, &pos);
 	dda->ray_dir.x = data->player.dir.x + data->player.plane.x * cam_x;
 	dda->ray_dir.y = data->player.dir.y + data->player.plane.y * cam_x;
-	// dda->delta_dist.x = sqrt(1 + (dda->ray_dir.y * dda->ray_dir.y) / (dda->ray_dir.x * dda->ray_dir.x));
-	// dda->delta_dist.y = sqrt(1 + (dda->ray_dir.x * dda->ray_dir.x) / (dda->ray_dir.y * dda->ray_dir.y));
 	dda->delta_dist.x = fabs(1 / dda->ray_dir.x);
 	dda->delta_dist.y = fabs(1 / dda->ray_dir.y);
 	dda->map.x = (int)pos.x;
@@ -80,7 +78,7 @@ void	draw_wall(int x, t_fpoint pos, t_data *data)
 void	draw_cam(t_data *data)
 {
 	t_fpoint	pos;
-	int			x;
+	int		 	x;
 
 	get_player_point(&pos, 1, data);
 	x = 0;

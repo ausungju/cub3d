@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 04:28:20 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/05 20:58:35 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/06 18:12:51 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ void init_texture(t_data *data)
 	data->texture_addr[4] = mlx_get_data_addr(data->texture[4], &data->bits_pixel_tex, &data->line_length_tex, &data->endian_tex);
 	data->texture[5] = mlx_xpm_file_to_image(data->mlx, "tex/lapis.xpm", &tex_x, &tex_y);
 	data->texture_addr[5] = mlx_get_data_addr(data->texture[5], &data->bits_pixel_tex, &data->line_length_tex, &data->endian_tex);
+	data->texture[6] = mlx_xpm_file_to_image(data->mlx, "tex/brick.xpm", &tex_x, &tex_y);
+	data->texture_addr[6] = mlx_get_data_addr(data->texture[6], &data->bits_pixel_tex, &data->line_length_tex, &data->endian_tex);
 }

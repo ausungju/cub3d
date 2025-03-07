@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 06:51:39 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/02 04:03:33 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/07 13:29:29 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,14 @@ void	rotate(t_fpoint *point, double angle)
 	tmp_point_x = point->x;
 	point->x = point->x * cos(rad(angle)) - point->y * sin(rad(angle));
 	point->y = tmp_point_x * sin(rad(angle)) + point->y * cos(rad(angle));
+}
+
+double	get_deg(t_fpoint *dir)
+{
+	double	res;
+
+	res = atan2(dir->y, dir->x);
+	res = res * (180 / PI);
+	return (res);
+	
 }

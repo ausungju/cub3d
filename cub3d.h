@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/05 20:51:52 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/07 13:16:15 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,11 @@ typedef struct s_cub3d
 {
 	t_player	player;
 	void		*mlx;
-	void		*img_map;
-	char		*addr_map;
 	void		*win;
 	void		*img;
-	char		*texture_addr[7];
-	void		*texture[7];
 	char		*addr;
+	void		*texture[8];
+	char		*texture_addr[8];
 	char		**map;
 	char		map_x;
 	char		map_y;
@@ -120,6 +118,7 @@ int			key_event(int key_code, t_data *data);
 void		copy_fpoint(t_fpoint *f1, t_fpoint *f2);
 double		rad(double angle);
 void		rotate(t_fpoint *point, double angle);
+double		get_deg(t_fpoint *dir);
 
 // mlx_func.c
 t_data		*init_data(int argc, char **argv);

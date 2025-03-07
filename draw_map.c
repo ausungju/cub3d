@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/05 21:19:39 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/07 13:37:50 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void	draw_rader(t_data *data)
 
 	i = -30;
 	point_locate_map(get_player_point(&player, WS, data));
-	copy_fpoint(&dir, &data->player.dir);
-	rotate(&dir, -30);
-	while (i <= 30)
-	{
-		rotate(&dir, 0.005);
-		dda_line(player, dir, 0x11AA11, data);
-		i += 0.005;
-	}
+	// copy_fpoint(&dir, &data->player.dir);
+	// rotate(&dir, -30);
+	// while (i <= 30)
+	// {
+	// 	rotate(&dir, 1);
+	// 	dda_line(player, dir, 0x11AA11, data);
+	// 	i += 1;
+	// }
 	dda_line(player, data->player.dir, 0xFF0000, data);
 }
 

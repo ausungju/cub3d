@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 18:50:38 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/05 21:24:49 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/07 13:16:01 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	init_player(t_player *player, t_data *data)
 {
 	(void)data;
-	player->point.x = 1;
+	player->point.x = 2;
 	player->point.y = 2;
 	player->dir.x = 0;
-	player->dir.y = -1;
-	player->plane.x = -0.66;
+	player->dir.y = 1;
+	player->plane.x = 0.66;
 	player->plane.y = 0;
 }
 
@@ -53,8 +53,8 @@ t_data	*init_data(int argc, char **argv)
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_pixel, \
 		&data->line_length, &data->endian);
-	data->img_map = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->addr_map = mlx_get_data_addr(data->img_map, &data->bits_pixel, \
+	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->addr = mlx_get_data_addr(data->img, &data->bits_pixel, \
 		&data->line_length, &data->endian);
 	init_texture(data);
 	return (data);
