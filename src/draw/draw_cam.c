@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_cam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/08 05:53:11 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 21:31:06 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,10 @@ void	dda_wall(int x, t_dda *dda, t_data *data)
 void	draw_wall(int x, t_fpoint pos, t_data *data)
 {
 	t_dda	dda;
-	int		hit;
 
-	hit = 0;
+	dda.hit = 0;
 	set_dda_wall_var(x, pos, data, &dda);
-	while (hit == 0)
+	while (dda.hit == 0)
 	{
 		if (dda.side_dist.x < dda.side_dist.y)
 		{
@@ -90,9 +89,10 @@ void	draw_wall(int x, t_fpoint pos, t_data *data)
 			dda.map.y += dda.step.y;
 			dda.side = 1;
 		}
-		if (dda.map.y < 0 || dda.map.x < 0 || \
-			data->map[dda.map.y][dda.map.x] == '1')
-			hit = 1;
+		if (data->map[dda.map.y][dda.map.x] == WALL || \
+			data->map[dda.map.y][dda.map.x] == O_DR || \
+			data->map[dda.map.y][dda.map.x] == PORTAL)
+			dda.hit = data->map[dda.map.y][dda.map.x];
 	}
 	dda_wall(x, &dda, data);
 }

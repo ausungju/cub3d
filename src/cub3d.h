@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/08 06:26:09 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:32:48 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char			*get_element(int id, char **line);
 int				check_character(char c);
 
 void			set_map_size(t_data *data);
+void			verify_map(t_data *data);
 void			set_and_verify_map(t_data *data);
 
 int				select_parameter(char **line, t_data *data);
@@ -61,8 +62,12 @@ int				call_exit(t_data *data);
 int				get_strarr_size(char **ptr);
 
 // event.c
-void			re_draw(t_data *data);
-int				move_envet(int key_code, t_data *data);
+int				key_event_sleep(t_data *data);
+int				mouse_event_sleep(t_data *data);
+int				mouse_event(int key_code, int x, int y, t_data *data);
+int				mouse_move_event(int x, int y, t_data *data);
+int				re_draw(t_data *data);
+int				ws_envet(int key_code, t_data *data);
 int				key_event(int key_code, t_data *data);
 
 #endif

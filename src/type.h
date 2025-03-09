@@ -3,40 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   type.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/08 06:25:03 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:26:50 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPE_H
 # define TYPE_H
 
-# define NO			0
-# define SO			1
-# define WE			2
-# define EA			3
-# define FA			4
-# define F			5
-# define C			6
+# define NO				0
+# define SO				1
+# define WE				2
+# define EA				3
+# define FA				4
+# define DR				5
+# define PT				6
+# define F				7
+# define C				8
 
-# define WIDTH		1600
-# define HEIGHT		1200
-# define WS			15
-# define MG			10
+# define WALL			'1'
+# define PORTAL			'2'
+# define O_DR			'3'
+# define C_DR			'4'
 
-# define N_COLOR	0xFFA500
-# define S_COLOR	0x0000FF
-# define E_COLOR	0xFF0000
-# define W_COLOR	0x00FF00
+# define WIDTH			1200
+# define HEIGHT			900
+# define WS				7
+# define MG				10
+# define MOVE_SPEED		0.05f
+# define MOVE_CHECK		0.06f
+# define DOOR_DISTANCE	1.3f
+# define MOUSE_SPEED	0.1f
 
-# define PI			3.14159265358979323846
+# define N_COLOR		0xFFA500
+# define S_COLOR		0x0000FF
+# define E_COLOR		0xFF0000
+# define W_COLOR		0x00FF00
 
-# define TRUE		1
-# define FALSE		0
+# define PI				3.14159265358979323846
 
-# define MS			1000
+# define TRUE			1
+# define FALSE			0
+
+# define MS				1000
+# define K_DEFALT_SLEEP	5
+# define M_DEFALT_SLEEP	2
+# define DOOR_SLEEP		300
 
 typedef struct timeval	t_time;
 
@@ -58,6 +72,8 @@ typedef struct s_tex_info
 	char	*addr;
 	int		x;
 	int		y;
+	int		max_y;
+	int		num;
 	int		bits_pixel;
 	int		line_length;
 	int		endian;
@@ -75,7 +91,8 @@ typedef struct s_draw_tex
 {
 	double	step;
 	double	tex_pos;
-	int		num;
+	int		n;
+	int		tex_x;
 }	t_draw_tex;
 
 typedef struct s_dda
@@ -88,10 +105,10 @@ typedef struct s_dda
 	t_point		step;
 	double		perp_wall_dist;
 	int			line_weight;
+	int			hit;
 	int			side;
 	int			draw_start;
 	int			draw_end;
-	int			tex_x;
 }	t_dda;
 
 typedef struct s_cub3d
@@ -110,7 +127,11 @@ typedef struct s_cub3d
 	int			endian;
 	int			floor;
 	int			ceiling;
-	t_time		time;
+	int			sleep_time;
+	int			mouse_status;
+	double		ani_val;
+	t_time		key_time;
+	t_time		mouse_time;
 }	t_data;
 
 #endif

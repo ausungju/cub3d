@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:23:17 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/08 06:50:01 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:38:48 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,32 +30,21 @@ void	set_map_size(t_data *data)
 	}
 }
 
-void	verify_map(t_data *data)
-{
-	
-}
+// void	verify_map(t_data *data)
+// {
+// 	char	**map;
+// 	t_point	cur;
 
-void	set_and_verify_map(t_data *data)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (data->map[y])
-	{
-		x = 0;
-		while (data->map[y][x])
-		{
-			if (check_character(data->map[y][x]))
-			{
-				data->player.char_dir = data->map[y][x];
-				data->player.point.x = x;
-				data->player.point.y = y;
-				break ;
-			}
-			++x;
-		}
-		++y;
-	}
-	set_map_size(data);
-}
+// 	map = data->map;
+// 	cur.y = 0;
+// 	while (data->map[cur.y])
+// 	{
+// 		cur.x = 0;
+// 		while (data->map[cur.y][cur.x])
+// 		{
+// 			if (data->map[cur.y][cur.x] == ' ')
+// 			{
+// 			}
+// 		}
+// 	}
+// }

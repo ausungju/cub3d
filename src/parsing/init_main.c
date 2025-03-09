@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:01:25 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/08 06:17:35 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:17:48 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init_mlx_var(t_data *data)
 		&data->line_length, &data->endian);
 	if (data->addr == NULL)
 		parse_error(data);
-	data->texture = ft_calloc(5, sizeof (t_tex_info *));
+	data->texture = ft_calloc(7, sizeof (t_tex_info *));
 	if (data->texture == NULL)
 		parse_error(data);
 }
@@ -62,10 +62,14 @@ t_data	*init_data(int argc, char **argv)
 	data->floor = -1;
 	data->ceiling = -1;
 	data->player.char_dir = '\0';
+	data->mouse_status = 0;
+	data->ani_val = 0;
 	init_mlx_var(data);
 	file_parsing(argv[1], data);
 	init_player(&data->player);
-	if (gettimeofday(&data->time, NULL))
+	if (gettimeofday(&data->key_time, NULL))
+		parse_error(data);
+	if (gettimeofday(&data->mouse_time, NULL))
 		parse_error(data);
 	return (data);
 }

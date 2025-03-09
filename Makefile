@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+         #
+#    By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 03:10:13 by seongkim          #+#    #+#              #
-#    Updated: 2025/03/08 06:26:27 by seongkim         ###   ########.fr        #
+#    Updated: 2025/03/09 22:23:03 by seongkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ MANDATORY_SRCS = \
 	src/utils/ft_math.c			\
 	src/utils/utils.c			\
 	\
-	src/event.c					\
+	src/event1.c					\
+	src/event2.c					\
 	src/main.c
 
 MANDATORY_OBJS = $(patsubst %.c,%.o,$(MANDATORY_SRCS))

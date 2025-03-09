@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/08 05:39:49 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:25:51 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,21 @@ int	draw_character(t_data *data)
 	return (0);
 }
 
+void	set_map_pixel(int x, int y, t_data *data)
+{
+	if (data->map[y / WS][x / WS] == WALL || \
+		data->map[y / WS][x / WS] == ' ')
+		my_mlx_pixel_put(data, x + MG, y + MG, 0x222222);
+	else if (data->map[y / WS][x / WS] == PORTAL)
+		my_mlx_pixel_put(data, x + MG, y + MG, 0x9200D7);
+	else if (data->map[y / WS][x / WS] == O_DR)
+		my_mlx_pixel_put(data, x + MG, y + MG, 0x492F17);
+	else if (data->map[y / WS][x / WS] == C_DR)
+		my_mlx_pixel_put(data, x + MG, y + MG, 0xA59500);
+	else
+		my_mlx_pixel_put(data, x + MG, y + MG, 0x000000);
+}
+
 void	draw_map(t_data *data)
 {
 	int	x;
@@ -60,11 +75,7 @@ void	draw_map(t_data *data)
 		max_x = data->map_x[y / WS];
 		while (x < max_x)
 		{
-			if (data->map[y / WS][x / WS] == '1' || \
-				data->map[y / WS][x / WS] == ' ')
-				my_mlx_pixel_put(data, x + MG, y + MG, 0x333333);
-			else
-				my_mlx_pixel_put(data, x + MG, y + MG, 0x000000);
+			set_map_pixel(x, y, data);
 			++x;
 		}
 		++y;
