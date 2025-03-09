@@ -4,7 +4,7 @@ WE ./tex/gold.xpm
 EA ./tex/dia.xpm
 FA ./tex/face.xpm
 DR ./tex/door_dark.xpm
-PT ./tex/portal.xpm
+PT ./tex/portal1.xpm
 
 F 50,50,0
 C 10,30,0

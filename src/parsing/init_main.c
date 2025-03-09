@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:01:25 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 22:17:48 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 01:45:01 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,22 @@ void	init_mlx_var(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
-		parse_error(data);
+		parse_error("mlx_init failed");
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	if (data->win == NULL || data->img == NULL)
-		parse_error(data);
+		parse_error("mlx object creation failed");
+	data->pause_img = mlx_xpm_file_to_image(data->mlx, "tex/pause_img.xpm", \
+		&data->pause_x, &data->pause_y);
+	if (data->pause_img == NULL)
+		parse_error("mlx_xpm_file_to_image failed");
 	data->addr = mlx_get_data_addr(data->img, &data->bits_pixel, \
 		&data->line_length, &data->endian);
 	if (data->addr == NULL)
-		parse_error(data);
+		parse_error("mlx_get_data_addr() failed");
 	data->texture = ft_calloc(7, sizeof (t_tex_info *));
 	if (data->texture == NULL)
-		parse_error(data);
+		parse_error("allocation failed");
 }
 
 t_data	*init_data(int argc, char **argv)
@@ -55,21 +59,21 @@ t_data	*init_data(int argc, char **argv)
 	t_data	*data;
 
 	if (argc != 2)
-		parse_error(NULL);
+		parse_error("empty argument");
 	data = ft_calloc(1, sizeof (t_data));
 	if (data == NULL)
-		parse_error(data);
+		parse_error("allocation failed");
 	data->floor = -1;
 	data->ceiling = -1;
 	data->player.char_dir = '\0';
-	data->mouse_status = 0;
+	data->pause_status = 1;
 	data->ani_val = 0;
 	init_mlx_var(data);
 	file_parsing(argv[1], data);
 	init_player(&data->player);
 	if (gettimeofday(&data->key_time, NULL))
-		parse_error(data);
+		parse_error("gettimeofday() failed");
 	if (gettimeofday(&data->mouse_time, NULL))
-		parse_error(data);
+		parse_error("gettimeofday() failed");
 	return (data);
 }

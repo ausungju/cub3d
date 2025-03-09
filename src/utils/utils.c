@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 18:50:38 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 22:37:53 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:12:28 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ void	point_locate_map(t_point *dest, t_fpoint *point)
 	dest->y = point->y + MG;
 }
 
-void	parse_error(t_data *data)
+void	parse_error(char *msg)
 {
-	write(2, "Error\n", 7);
+	write(2, "Error: ", 8);
+	write(2, msg, ft_strlen(msg));
+	write(2, "\n", 1);
 	exit(0);
 }
 

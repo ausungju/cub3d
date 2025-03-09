@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 22:32:48 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:27:24 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void			draw_map(t_data *data);
 // parsing
 char			*gnl_pass_empty_line(int fd, int is_insert_nl);
 char			*pass_space(char *line);
-char			*get_element(int id, char **line);
+char			*get_element(char **line);
 int				check_character(char c);
 
 void			set_map_size(t_data *data);
 void			verify_map(t_data *data);
 void			set_and_verify_map(t_data *data);
 
-int				select_parameter(char **line, t_data *data);
+int				select_parameter(char **line);
 void			set_color(int id, char *line, t_data *data);
 void			set_texture(int id, char *line, t_data *data);
 void			file_parsing(char *file_path, t_data *data);
@@ -57,7 +57,7 @@ double			get_deg(t_fpoint *dir);
 
 t_fpoint		*get_player_point(t_fpoint *point, int scope, t_data *data);
 void			point_locate_map(t_point *dest, t_fpoint *point);
-void			parse_error(t_data *data);
+void			parse_error(char *s);
 int				call_exit(t_data *data);
 int				get_strarr_size(char **ptr);
 

@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 22:24:05 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:10:51 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ unsigned int	get_texture_color(int x, int y, int num, t_data *data)
 	if (tex->num != 1)
 	{
 		return (*(unsigned int *)(tex->addr + \
-			(y + ((int)data->ani_val & tex->num - 1) * tex->y) * \
+			(y + ((int)data->ani_val & (tex->num - 1)) * tex->y) * \
 			tex->line_length + x * (tex->bits_pixel / 8)));
 	}
 	return (*(unsigned int *)(tex->addr + y * tex->line_length + \
@@ -50,7 +50,7 @@ int	select_texture(t_dda *dda)
 	return (3);
 }
 
-void	set_texture_var(int x, t_dda *dda, t_data *data, t_draw_tex *draw_tex)
+void	set_texture_var(t_dda *dda, t_data *data, t_draw_tex *draw_tex)
 {
 	double	wall_x;
 
@@ -77,7 +77,7 @@ int	draw_texture(int x, t_dda *dda, t_data *data)
 	int			color;
 	int			tex_y;
 
-	set_texture_var(x, dda, data, &draw_tex);
+	set_texture_var(dda, data, &draw_tex);
 	y = 0;
 	while (y < HEIGHT)
 	{

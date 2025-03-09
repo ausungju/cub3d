@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 22:26:50 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 01:36:58 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct s_cub3d
 	void		*mlx;
 	void		*win;
 	void		*img;
+	void		*pause_img;
 	char		*addr;
 	char		**map;
 	int			*map_x;
@@ -128,7 +129,9 @@ typedef struct s_cub3d
 	int			floor;
 	int			ceiling;
 	int			sleep_time;
-	int			mouse_status;
+	int			pause_status;
+	int			pause_x;
+	int			pause_y;
 	double		ani_val;
 	t_time		key_time;
 	t_time		mouse_time;

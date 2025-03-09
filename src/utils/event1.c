@@ -6,11 +6,11 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:34:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 22:28:19 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 01:52:03 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	ad_envet(int key_code, t_data *data)
 {
@@ -99,6 +99,8 @@ int	key_event(int key_code, t_data *data)
 {
 	if (key_code == 65307)
 		call_exit(data);
+	if (data->pause_status)
+		return (0);
 	if (key_event_sleep(data))
 		return (0);
 	if (key_code == 32)

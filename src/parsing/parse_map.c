@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:23:17 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 22:38:48 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:30:02 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	set_map_size(t_data *data)
 	data->map_y = y * WS;
 	data->map_x = ft_calloc(y, sizeof(int));
 	if (data->map_x == NULL)
-		parse_error(data);
+		parse_error("allocation failed");
 	i = 0;
 	while (i < y)
 	{

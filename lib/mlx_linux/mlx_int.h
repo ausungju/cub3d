@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_int.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:17:00 by seongkim          #+#    #+#             */
-/*   Updated: 2025/02/18 20:19:18 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 01:53:40 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@
 # define ENV_DISPLAY "DISPLAY"
 # define LOCALHOST "localhost"
 # define ERR_NO_TRUECOLOR "MinilibX Error : No TrueColor Visual available.\n"
-# define WARN_SHM_ATTACH \
-	"MinilibX Warning : X server can't attach shared memory.\n"
+# define WARN_SHM_ATTACH "MinilibX Warning : X server can't attach shared memory.\n"
 
 typedef struct s_xpm_col
 {

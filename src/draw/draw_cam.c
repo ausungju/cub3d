@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 21:31:06 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:10:06 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	set_dda_wall_var(int x, t_fpoint pos, t_data *data, t_dda *dda)
 
 void	dda_wall(int x, t_dda *dda, t_data *data)
 {
-	int		y;
-
 	if (dda->side == 0)
 		dda->perp_wall_dist = (dda->side_dist.x - dda->delta_dist.x);
 	else

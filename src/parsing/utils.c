@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 02:36:42 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/08 05:53:52 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:11:01 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*pass_space(char *line)
 	return (line);
 }
 
-char	*get_element(int id, char **line)
+char	*get_element(char **line)
 {
 	char	*res;
 	int		size;
