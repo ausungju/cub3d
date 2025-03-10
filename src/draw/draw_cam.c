@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 23:10:06 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:27:08 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	draw_wall(int x, t_fpoint pos, t_data *data)
 			dda.side = 1;
 		}
 		if (data->map[dda.map.y][dda.map.x] == WALL || \
-			data->map[dda.map.y][dda.map.x] == O_DR || \
+			data->map[dda.map.y][dda.map.x] == C_DR || \
 			data->map[dda.map.y][dda.map.x] == PORTAL)
 			dda.hit = data->map[dda.map.y][dda.map.x];
 	}

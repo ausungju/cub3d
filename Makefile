@@ -6,7 +6,7 @@
 #    By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 03:10:13 by seongkim          #+#    #+#              #
-#    Updated: 2025/03/10 01:47:26 by seongkim         ###   ########.fr        #
+#    Updated: 2025/03/10 15:55:36 by seongkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 # CFLAGS = -g
 
-LFLAGS = -Llib/mlx_linux -lmlx_Linux -Llib/libft -lft -lXext -lX11 -lm -lz
+LFLAGS = -Llib/mlx_linux -lmlx -Llib/libft -lft -lXext -lX11 -lm -lz
 INCLUDE = -Imlx_linux
 NAME = cub3d
 

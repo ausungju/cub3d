@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 22:25:51 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:21:05 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	set_map_pixel(int x, int y, t_data *data)
 		my_mlx_pixel_put(data, x + MG, y + MG, 0x222222);
 	else if (data->map[y / WS][x / WS] == PORTAL)
 		my_mlx_pixel_put(data, x + MG, y + MG, 0x9200D7);
-	else if (data->map[y / WS][x / WS] == O_DR)
-		my_mlx_pixel_put(data, x + MG, y + MG, 0x492F17);
 	else if (data->map[y / WS][x / WS] == C_DR)
+		my_mlx_pixel_put(data, x + MG, y + MG, 0x492F17);
+	else if (data->map[y / WS][x / WS] == O_DR)
 		my_mlx_pixel_put(data, x + MG, y + MG, 0xA59500);
 	else
 		my_mlx_pixel_put(data, x + MG, y + MG, 0x000000);

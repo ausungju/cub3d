@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 23:10:51 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:21:05 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ unsigned int	get_texture_color(int x, int y, int num, t_data *data)
 
 int	select_texture(t_dda *dda)
 {
-	if (dda->hit == O_DR)
+	if (dda->hit == C_DR)
 		return (DR);
 	if (dda->hit == PORTAL)
 		return (PT);
@@ -47,7 +47,7 @@ int	select_texture(t_dda *dda)
 		return (WE);
 	if (dda->step.y > 0)
 		return (NO);
-	return (3);
+	return (SO);
 }
 
 void	set_texture_var(t_dda *dda, t_data *data, t_draw_tex *draw_tex)

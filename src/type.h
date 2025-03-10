@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/10 01:36:58 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:37:16 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 # define WALL			'1'
 # define PORTAL			'2'
-# define O_DR			'3'
-# define C_DR			'4'
+# define C_DR			'3'
+# define O_DR			'4'
 
 # define WIDTH			1200
 # define HEIGHT			900
@@ -36,6 +36,7 @@
 # define MOVE_CHECK		0.06f
 # define DOOR_DISTANCE	1.3f
 # define MOUSE_SPEED	0.1f
+# define TEXTURE_SPEED	0.08f
 
 # define N_COLOR		0xFFA500
 # define S_COLOR		0x0000FF
@@ -49,7 +50,7 @@
 
 # define MS				1000
 # define K_DEFALT_SLEEP	5
-# define M_DEFALT_SLEEP	2
+# define M_DEFALT_SLEEP	1
 # define DOOR_SLEEP		300
 
 typedef struct timeval	t_time;
@@ -119,6 +120,7 @@ typedef struct s_cub3d
 	void		*win;
 	void		*img;
 	void		*pause_img;
+	void		*item;
 	char		*addr;
 	char		**map;
 	int			*map_x;
@@ -130,8 +132,12 @@ typedef struct s_cub3d
 	int			ceiling;
 	int			sleep_time;
 	int			pause_status;
+	int			mouse_x;
+	int			mouse_y;
 	int			pause_x;
 	int			pause_y;
+	int			item_x;
+	int			item_y;
 	double		ani_val;
 	t_time		key_time;
 	t_time		mouse_time;

@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 23:27:24 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:54:45 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "type.h"
 # include "../lib/libft/libft.h"
 # include "../lib/mlx_linux/mlx.h"
+# include "../lib/mlx_linux/mlx_int.h"
 
 // draw
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);

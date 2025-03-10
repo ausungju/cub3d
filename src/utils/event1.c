@@ -6,11 +6,17 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:34:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/10 01:52:03 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:59:14 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int	move_hit(int x, int y, t_data *data)
+{
+	return (data->map[y][x] != WALL && data->map[y][x] != PORTAL && \
+			data->map[y][x] != C_DR);
+}
 
 int	ad_envet(int key_code, t_data *data)
 {
@@ -20,22 +26,22 @@ int	ad_envet(int key_code, t_data *data)
 	{
 		p.y = (int)(data->player.point.y - data->player.dir.x * MOVE_CHECK);
 		p.x = (int)(data->player.point.x);
-		if (data->map[p.y][p.x] != '1' && data->map[p.y][p.x] != '2')
+		if (move_hit(p.x, p.y, data))
 			data->player.point.y -= data->player.dir.x * MOVE_SPEED;
 		p.y = (int)(data->player.point.y);
 		p.x = (int)(data->player.point.x + data->player.dir.y * MOVE_CHECK);
-		if (data->map[p.y][p.x] != '1' && data->map[p.y][p.x] != '2')
+		if (move_hit(p.x, p.y, data))
 			data->player.point.x += data->player.dir.y * MOVE_SPEED;
 	}
 	else if (key_code == 100)
 	{
 		p.y = (int)(data->player.point.y + data->player.dir.x * MOVE_CHECK);
 		p.x = (int)(data->player.point.x);
-		if (data->map[p.y][p.x] != '1' && data->map[p.y][p.x] != '2')
+		if (move_hit(p.x, p.y, data))
 			data->player.point.y += data->player.dir.x * MOVE_SPEED;
 		p.y = (int)(data->player.point.y);
 		p.x = (int)(data->player.point.x - data->player.dir.y * MOVE_CHECK);
-		if (data->map[p.y][p.x] != '1' && data->map[p.y][p.x] != '2')
+		if (move_hit(p.x, p.y, data))
 			data->player.point.x -= data->player.dir.y * MOVE_SPEED;
 	}
 	return (0);
@@ -49,22 +55,22 @@ int	ws_envet(int key_code, t_data *data)
 	{
 		p.y = (int)(data->player.point.y + data->player.dir.y * MOVE_CHECK);
 		p.x = (int)(data->player.point.x);
-		if (data->map[p.y][p.x] != '1' && data->map[p.y][p.x] != '2')
+		if (move_hit(p.x, p.y, data))
 			data->player.point.y += data->player.dir.y * MOVE_SPEED;
 		p.y = (int)(data->player.point.y);
 		p.x = (int)(data->player.point.x + data->player.dir.x * MOVE_CHECK);
-		if (data->map[p.y][p.x] != '1' && data->map[p.y][p.x] != '2')
+		if (move_hit(p.x, p.y, data))
 			data->player.point.x += data->player.dir.x * MOVE_SPEED;
 	}
 	else if (key_code == 115)
 	{
 		p.y = (int)(data->player.point.y - data->player.dir.y * MOVE_CHECK);
 		p.x = (int)(data->player.point.x);
-		if (data->map[p.y][p.x] != '1' && data->map[p.y][p.x] != '2')
+		if (move_hit(p.x, p.y, data))
 			data->player.point.y -= data->player.dir.y * MOVE_SPEED;
 		p.y = (int)(data->player.point.y);
 		p.x = (int)(data->player.point.x - data->player.dir.x * MOVE_CHECK);
-		if (data->map[p.y][p.x] != '1' && data->map[p.y][p.x] != '2')
+		if (move_hit(p.x, p.y, data))
 			data->player.point.x -= data->player.dir.x * MOVE_SPEED;
 	}
 	return (ad_envet(key_code, data));
@@ -80,12 +86,12 @@ void	door_event(t_data *data)
 	{
 		p.y = (int)(data->player.point.y + data->player.dir.y * d);
 		p.x = (int)(data->player.point.x + data->player.dir.x * d);
-		if (data->map[p.y][p.x] == O_DR || data->map[p.y][p.x] == C_DR)
+		if (data->map[p.y][p.x] == C_DR || data->map[p.y][p.x] == O_DR)
 		{
-			if (data->map[p.y][p.x] == O_DR)
-				data->map[p.y][p.x] = C_DR;
-			else
+			if (data->map[p.y][p.x] == C_DR)
 				data->map[p.y][p.x] = O_DR;
+			else
+				data->map[p.y][p.x] = C_DR;
 			data->sleep_time = DOOR_SLEEP;
 			break ;
 		}

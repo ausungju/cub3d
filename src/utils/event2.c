@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:34:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/10 01:52:14 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:54:38 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,11 @@ int	mouse_event(int key_code, int x, int y, t_data *data)
 
 int	mouse_move_event(int x, int y, t_data *data)
 {
+	++y;
 	if (data->pause_status)
-		return (y);
+		return (0);
 	rotate(&data->player.dir, (x - WIDTH / 2) * MOUSE_SPEED);
 	rotate(&data->player.plane, (x - WIDTH / 2) * MOUSE_SPEED);
 	mlx_mouse_move(data->mlx, data->win, WIDTH / 2, HEIGHT / 2);
-	return (y);
+	return (0);
 }

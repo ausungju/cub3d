@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:01:25 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/10 01:45:01 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:00:09 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ t_data	*init_data(int argc, char **argv)
 	data->pause_status = 1;
 	data->ani_val = 0;
 	init_mlx_var(data);
+	if (!mlx_mouse_get_pos(data->mlx, data->win, \
+		&data->mouse_x, &data->mouse_y))
+		parse_error("mlx_mouse_get_pos() failed\n");
+	mlx_do_key_autorepeaton(data->mlx);
 	file_parsing(argv[1], data);
 	init_player(&data->player);
 	if (gettimeofday(&data->key_time, NULL))
