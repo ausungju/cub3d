@@ -6,7 +6,7 @@
 /*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:23:17 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/17 19:10:07 by bohchoi          ###   ########.fr       */
+/*   Updated: 2025/03/17 19:45:12 by bohchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,34 +30,35 @@ void	set_map_size(t_data *data)
 	}
 }
 
-int     is_inside_map(t_data *data, int x, int y)
+int	map_range(t_data *data, int x, int y)
 {
-    return (y >= 0 && y < data->map_y && x >= 0 && x < (int)ft_strlen(data->map[y]));
+	return (y >= 0 && y < data->map_y && x >= 0 && \
+			x < (int)ft_strlen(data->map[y]));
 }
 
-void    check_wall(t_data *data)
+void	check_wall(t_data *data)
 {
-    int	y;
-    int	x;
+	int	y;
+	int	x;
 
 	y = 0;
-    while (data->map[y])
-    {
-        x = 0;
-        while (data->map[y][x])
-        {
-            if (data->map[y][x] == '0' || ft_strchr("NSEW", data->map[y][x]))
-            {
-                if (!is_inside_map(data, x, y - 1) || data->map[y - 1][x] == ' ' ||
-                    !is_inside_map(data, x, y + 1) || data->map[y + 1][x] == ' ' ||
-                    !is_inside_map(data, x - 1, y) || data->map[y][x - 1] == ' ' ||
-                    !is_inside_map(data, x + 1, y) || data->map[y][x + 1] == ' ')
-                {
+	while (data->map[y])
+	{
+		x = 0;
+		while (data->map[y][x])
+		{
+			if (data->map[y][x] == '0' || ft_strchr("NSEW", data->map[y][x]))
+			{
+				if (!map_range(data, x, y - 1) || data->map[y - 1][x] == ' ' ||
+					!map_range(data, x, y + 1) || data->map[y + 1][x] == ' ' ||
+					!map_range(data, x - 1, y) || data->map[y][x - 1] == ' ' ||
+					!map_range(data, x + 1, y) || data->map[y][x + 1] == ' ')
+				{
 					parse_error("Map is not enclosed by walls");
-                }
-            }
-            x++;
-        }
-        y++;
-    }
+				}
+			}
+			x++;
+		}
+		y++;
+	}
 }

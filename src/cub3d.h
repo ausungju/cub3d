@@ -6,7 +6,7 @@
 /*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/17 18:40:47 by bohchoi          ###   ########.fr       */
+/*   Updated: 2025/03/17 19:42:06 by bohchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int				check_character(char c);
 
 void			set_map_size(t_data *data);
 void			verify_map(t_data *data);
-int             is_inside_map(t_data *data, int x, int y);
-void            check_wall(t_data *data);
+int				map_range(t_data *data, int x, int y);
+void			check_wall(t_data *data);
 void			set_and_verify_map(t_data *data);
 
 int				select_parameter(char **line);
