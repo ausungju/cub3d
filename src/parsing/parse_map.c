@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:23:17 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 23:30:02 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:10:07 by bohchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,34 @@ void	set_map_size(t_data *data)
 	}
 }
 
-// void	verify_map(t_data *data)
-// {
-// 	char	**map;
-// 	t_point	cur;
+int     is_inside_map(t_data *data, int x, int y)
+{
+    return (y >= 0 && y < data->map_y && x >= 0 && x < (int)ft_strlen(data->map[y]));
+}
 
-// 	map = data->map;
-// 	cur.y = 0;
-// 	while (data->map[cur.y])
-// 	{
-// 		cur.x = 0;
-// 		while (data->map[cur.y][cur.x])
-// 		{
-// 			if (data->map[cur.y][cur.x] == ' ')
-// 			{
-// 			}
-// 		}
-// 	}
-// }
+void    check_wall(t_data *data)
+{
+    int	y;
+    int	x;
+
+	y = 0;
+    while (data->map[y])
+    {
+        x = 0;
+        while (data->map[y][x])
+        {
+            if (data->map[y][x] == '0' || ft_strchr("NSEW", data->map[y][x]))
+            {
+                if (!is_inside_map(data, x, y - 1) || data->map[y - 1][x] == ' ' ||
+                    !is_inside_map(data, x, y + 1) || data->map[y + 1][x] == ' ' ||
+                    !is_inside_map(data, x - 1, y) || data->map[y][x - 1] == ' ' ||
+                    !is_inside_map(data, x + 1, y) || data->map[y][x + 1] == ' ')
+                {
+					parse_error("Map is not enclosed by walls");
+                }
+            }
+            x++;
+        }
+        y++;
+    }
+}

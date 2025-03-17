@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:38:12 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/10 01:52:33 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:08:36 by bohchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	set_and_verify_map(t_data *data)
 	if (data->player.char_dir == '\0')
 		parse_error("invalid map file");
 	set_map_size(data);
-	// verify_map(data);
+	check_wall(data);
 }
 
 void	set_map(int fd, t_data *data)
