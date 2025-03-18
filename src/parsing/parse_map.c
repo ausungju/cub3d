@@ -6,7 +6,7 @@
 /*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:23:17 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/18 19:52:06 by bohchoi          ###   ########.fr       */
+/*   Updated: 2025/03/18 19:54:19 by bohchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	check_wall(t_data *data)
 		{
 			if ((data->map[y][x] < '0' || data->map[y][x] > '3') &&
 				(!(ft_strchr("NSEW ", data->map[y][x]))))
-				parse_error("invalid map file111111");
+				parse_error("invalid map file");
 			if (data->map[y][x] == '0' || data->map[y][x] == '3' ||
 				ft_strchr("NSEW", data->map[y][x]))
 			{
@@ -57,7 +57,7 @@ void	check_wall(t_data *data)
 					!map_range(data, x, y + 1) || data->map[y + 1][x] == ' ' ||
 					!map_range(data, x - 1, y) || data->map[y][x - 1] == ' ' ||
 					!map_range(data, x + 1, y) || data->map[y][x + 1] == ' ')
-					parse_error("invalid map file222222");
+					parse_error("invalid map file");
 			}
 			x++;
 		}
