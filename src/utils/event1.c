@@ -6,7 +6,7 @@
 /*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:34:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/10 17:59:14 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:35:42 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,8 @@ int	key_event(int key_code, t_data *data)
 		return (0);
 	if (key_event_sleep(data))
 		return (0);
-	if (key_code == 32)
+	if (key_code == 32 && data->map[(int)(data->player.point.y)] \
+		[(int)(data->player.point.x)] != '4')
 		door_event(data);
 	else if (key_code == 65361)
 	{
