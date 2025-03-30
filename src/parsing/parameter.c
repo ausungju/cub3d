@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parameter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 02:35:39 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/18 19:28:40 by bohchoi          ###   ########.fr       */
+/*   Updated: 2025/03/30 19:30:45 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ int	select_parameter(char **line)
 		id = WE;
 	else if (ft_strncmp(*line, "EA ", 3) == 0)
 		id = EA;
-	else if (ft_strncmp(*line, "FA ", 3) == 0)
-		id = FA;
-	else if (ft_strncmp(*line, "DR ", 3) == 0)
-		id = DR;
-	else if (ft_strncmp(*line, "PT ", 3) == 0)
-		id = PT;
 	else if (ft_strncmp(*line, "F ", 2) == 0)
 		id = F;
 	else if (ft_strncmp(*line, "C ", 2) == 0)

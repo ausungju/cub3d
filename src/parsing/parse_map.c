@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:23:17 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/18 19:54:19 by bohchoi          ###   ########.fr       */
+/*   Updated: 2025/03/30 19:37:38 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	check_wall(t_data *data)
 		x = 0;
 		while (data->map[y][x])
 		{
-			if ((data->map[y][x] < '0' || data->map[y][x] > '3') &&
+			if (data->map[y][x] != SPACE && data->map[y][x] != WALL &&
 				(!(ft_strchr("NSEW ", data->map[y][x]))))
 				parse_error("invalid map file");
-			if (data->map[y][x] == '0' || data->map[y][x] == '3' ||
+			if (data->map[y][x] == SPACE ||
 				ft_strchr("NSEW", data->map[y][x]))
 			{
 				if (!map_range(data, x, y - 1) || data->map[y - 1][x] == ' ' ||

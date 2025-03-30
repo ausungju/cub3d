@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_cam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/10 17:27:08 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:44:07 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,7 @@ void	draw_wall(int x, t_fpoint pos, t_data *data)
 			dda.map.y += dda.step.y;
 			dda.side = 1;
 		}
-		if (data->map[dda.map.y][dda.map.x] == WALL || \
-			data->map[dda.map.y][dda.map.x] == C_DR || \
-			data->map[dda.map.y][dda.map.x] == PORTAL)
+		if (data->map[dda.map.y][dda.map.x] == WALL)
 			dda.hit = data->map[dda.map.y][dda.map.x];
 	}
 	dda_wall(x, &dda, data);

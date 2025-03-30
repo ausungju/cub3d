@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:28:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/17 19:42:06 by bohchoi          ###   ########.fr       */
+/*   Updated: 2025/03/30 19:47:53 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 unsigned int	get_texture_color(int x, int y, int num, t_data *data);
 int				draw_texture(int x, t_dda *dda, t_data *data);
 void			draw_cam(t_data *data);
-void			draw_map(t_data *data);
 
 // parsing
 char			*gnl_pass_empty_line(int fd, int is_insert_nl);
@@ -40,7 +39,6 @@ char			*get_element(char **line);
 int				check_character(char c);
 
 void			set_map_size(t_data *data);
-void			verify_map(t_data *data);
 int				map_range(t_data *data, int x, int y);
 void			check_wall(t_data *data);
 void			set_and_verify_map(t_data *data);
@@ -66,9 +64,6 @@ int				get_strarr_size(char **ptr);
 
 // event.c
 int				key_event_sleep(t_data *data);
-int				mouse_event_sleep(t_data *data);
-int				mouse_event(int key_code, int x, int y, t_data *data);
-int				mouse_move_event(int x, int y, t_data *data);
 int				re_draw(t_data *data);
 int				ws_envet(int key_code, t_data *data);
 int				key_event(int key_code, t_data *data);

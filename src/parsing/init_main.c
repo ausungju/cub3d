@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:01:25 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/10 18:00:09 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:40:49 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@ void	init_mlx_var(t_data *data)
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	if (data->win == NULL || data->img == NULL)
 		parse_error("mlx object creation failed");
-	data->pause_img = mlx_xpm_file_to_image(data->mlx, "tex/pause_img.xpm", \
-		&data->pause_x, &data->pause_y);
-	if (data->pause_img == NULL)
-		parse_error("mlx_xpm_file_to_image failed");
 	data->addr = mlx_get_data_addr(data->img, &data->bits_pixel, \
 		&data->line_length, &data->endian);
 	if (data->addr == NULL)
@@ -66,18 +62,12 @@ t_data	*init_data(int argc, char **argv)
 	data->floor = -1;
 	data->ceiling = -1;
 	data->player.char_dir = '\0';
-	data->pause_status = 1;
 	data->ani_val = 0;
 	init_mlx_var(data);
-	if (!mlx_mouse_get_pos(data->mlx, data->win, \
-		&data->mouse_x, &data->mouse_y))
-		parse_error("mlx_mouse_get_pos() failed\n");
 	mlx_do_key_autorepeaton(data->mlx);
 	file_parsing(argv[1], data);
 	init_player(&data->player);
 	if (gettimeofday(&data->key_time, NULL))
-		parse_error("gettimeofday() failed");
-	if (gettimeofday(&data->mouse_time, NULL))
 		parse_error("gettimeofday() failed");
 	return (data);
 }

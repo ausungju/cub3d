@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:34:49 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/18 20:35:42 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:43:12 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,26 @@
 
 int	move_hit(int x, int y, t_data *data)
 {
-	return (data->map[y][x] != WALL && data->map[y][x] != PORTAL && \
-			data->map[y][x] != C_DR);
+	return (data->map[y][x] != WALL);
+}
+
+int	key_event_sleep(t_data *data)
+{
+	t_time	time;
+	int		ms;
+
+	if (gettimeofday(&time, NULL))
+		parse_error("gettimeofday() fail");
+	ms = (long)(time.tv_sec * MS) - (long)(data->key_time.tv_sec * MS);
+	ms += (long)(time.tv_usec / MS) - (long)(data->key_time.tv_usec / MS);
+	if (ms > data->sleep_time)
+	{
+		data->key_time.tv_sec = time.tv_sec;
+		data->key_time.tv_usec = time.tv_usec;
+		data->sleep_time = K_DEFALT_SLEEP;
+		return (0);
+	}
+	return (1);
 }
 
 int	ad_envet(int key_code, t_data *data)
@@ -76,42 +94,12 @@ int	ws_envet(int key_code, t_data *data)
 	return (ad_envet(key_code, data));
 }
 
-void	door_event(t_data *data)
-{
-	t_point	p;
-	double	d;
-
-	d = 0;
-	while (d < DOOR_DISTANCE)
-	{
-		p.y = (int)(data->player.point.y + data->player.dir.y * d);
-		p.x = (int)(data->player.point.x + data->player.dir.x * d);
-		if (data->map[p.y][p.x] == C_DR || data->map[p.y][p.x] == O_DR)
-		{
-			if (data->map[p.y][p.x] == C_DR)
-				data->map[p.y][p.x] = O_DR;
-			else
-				data->map[p.y][p.x] = C_DR;
-			data->sleep_time = DOOR_SLEEP;
-			break ;
-		}
-		else if (data->map[p.y][p.x] == WALL || data->map[p.y][p.x] == PORTAL)
-			break ;
-		d += 0.01;
-	}
-}
-
 int	key_event(int key_code, t_data *data)
 {
 	if (key_code == 65307)
 		call_exit(data);
-	if (data->pause_status)
-		return (0);
 	if (key_event_sleep(data))
 		return (0);
-	if (key_code == 32 && data->map[(int)(data->player.point.y)] \
-		[(int)(data->player.point.x)] != '4')
-		door_event(data);
 	else if (key_code == 65361)
 	{
 		rotate(&data->player.dir, -1);

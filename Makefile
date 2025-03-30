@@ -3,16 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+         #
+#    By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 03:10:13 by seongkim          #+#    #+#              #
-#    Updated: 2025/03/10 15:55:36 by seongkim         ###   ########.fr        #
+#    Updated: 2025/03/30 20:07:53 by seongkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-# CFLAGS = -g
 
 LFLAGS = -Llib/mlx_linux -lmlx -Llib/libft -lft -lXext -lX11 -lm -lz
 INCLUDE = -Imlx_linux
@@ -26,7 +25,6 @@ LIB_A = $(patsubst %,%.a,$(LIB_DIR))
 
 
 MANDATORY_SRCS = \
-	src/draw/draw_map.c			\
 	src/draw/draw_cam.c			\
 	src/draw/draw_utils.c		\
 	\
@@ -40,17 +38,42 @@ MANDATORY_SRCS = \
 	src/utils/utils.c			\
 	\
 	src/utils/event1.c			\
-	src/utils/event2.c			\
 	src/main.c
 
-MANDATORY_OBJS = $(patsubst %.c,%.o,$(MANDATORY_SRCS))
+BONUS_SRCS = \
+	src_bonus/draw/draw_map.c			\
+	src_bonus/draw/draw_cam.c			\
+	src_bonus/draw/draw_utils.c		\
+	\
+	src_bonus/parsing/init_main.c		\
+	src_bonus/parsing/parameter.c		\
+	src_bonus/parsing/parse_file.c	\
+	src_bonus/parsing/parse_map.c		\
+	src_bonus/parsing/utils.c			\
+	\
+	src_bonus/utils/ft_math.c			\
+	src_bonus/utils/utils.c			\
+	\
+	src_bonus/utils/event1.c			\
+	src_bonus/utils/event2.c			\
+	src_bonus/main.c
 
-SRCS = $(MANDATORY_SRCS)
-OBJ = $(MANDATORY_OBJS)
+MANDATORY_OBJS = $(patsubst %.c,%.o,$(MANDATORY_SRCS))
+BONUS_OBJS = $(patsubst %.c,%.o,$(BONUS_SRCS))
+
+
+ifdef WITH_BONUS
+    OBJ = $(LIBFT_OBJS) $(BONUS_OBJS)
+else
+    OBJ = $(LIBFT_OBJS) $(MANDATORY_OBJS)
+endif
 
 .PHONY: all clean_lib clean fclean re rclean
 
 all : $(NAME)
+
+bonus:
+	make WITH_BONUS=1 all
 
 $(NAME) : $(OBJ) $(LIB_A)
 	$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) $(INCLUDE) -o $(NAME)

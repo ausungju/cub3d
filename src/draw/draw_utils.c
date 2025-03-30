@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 03:38:29 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/10 15:21:05 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/03/30 20:13:52 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ unsigned int	get_texture_color(int x, int y, int num, t_data *data)
 	tex = data->texture[num];
 	if (tex->num != 1)
 	{
-		return (*(unsigned int *)(tex->addr + \
-			(y + ((int)data->ani_val & (tex->num - 1)) * tex->y) * \
+		return (*(unsigned int *)(tex->addr + (y + tex->y) * \
 			tex->line_length + x * (tex->bits_pixel / 8)));
 	}
 	return (*(unsigned int *)(tex->addr + y * tex->line_length + \
@@ -37,10 +36,6 @@ unsigned int	get_texture_color(int x, int y, int num, t_data *data)
 
 int	select_texture(t_dda *dda)
 {
-	if (dda->hit == C_DR)
-		return (DR);
-	if (dda->hit == PORTAL)
-		return (PT);
 	if (dda->side == 0 && dda->step.x > 0)
 		return (EA);
 	if (dda->side == 0 && dda->step.x < 0)

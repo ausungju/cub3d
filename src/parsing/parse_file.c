@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:38:12 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/18 15:42:38 by bohchoi          ###   ########.fr       */
+/*   Updated: 2025/03/30 20:07:54 by seongkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,18 @@ void	set_parameter(char *line, t_data *data)
 void	file_parsing(char *file_path, t_data *data)
 {
 	char	*line;
+	char	*file_type;
 	int		fd;
 	int		i;
 
-	if (ft_strncmp(ft_strrchr(file_path, '.'), ".cub", 5) != 0)
+	file_type = ft_strrchr(file_path, '.');
+	if (file_type == NULL || ft_strncmp(file_type, ".cub", 5) != 0)
 		parse_error("invalid map file name");
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
 		parse_error("open() failed");
 	i = 0;
-	while (i < 9)
+	while (i < 6)
 	{
 		line = gnl_pass_empty_line(fd, TRUE);
 		if (line == NULL)
