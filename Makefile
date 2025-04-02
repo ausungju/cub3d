@@ -3,19 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seongkim <seongkim@student.42gyeongsan.    +#+  +:+       +#+         #
+#    By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 03:10:13 by seongkim          #+#    #+#              #
-#    Updated: 2025/03/30 20:07:53 by seongkim         ###   ########.fr        #
+#    Updated: 2025/04/02 15:00:12 by bohchoi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 LFLAGS = -Llib/mlx_linux -lmlx -Llib/libft -lft -lXext -lX11 -lm -lz
 INCLUDE = -Imlx_linux
-NAME = cub3d
+NAME = cub3D
 
 LIB_DIR = \
 	lib/libft		\
