@@ -6,22 +6,22 @@
 #    By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 03:10:13 by seongkim          #+#    #+#              #
-#    Updated: 2025/04/02 15:00:12 by bohchoi          ###   ########.fr        #
+#    Updated: 2025/04/02 18:30:03 by bohchoi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
-LFLAGS = -Llib/mlx_linux -lmlx -Llib/libft -lft -lXext -lX11 -lm -lz
-INCLUDE = -Imlx_linux
+LFLAGS = -Llib/minilibx-linux -lmlx -Llib/libft -lft -lXext -lX11 -lm -lz
+INCLUDE = -Ilib/minilibx-linux
 NAME = cub3D
 
-LIB_DIR = \
-	lib/libft		\
-	lib/mlx_linux
+LIBFT_DIR =	lib/libft
+LIBX_DIR =	lib/minilibx-linux
 
-LIB_A = $(patsubst %,%.a,$(LIB_DIR))
+LIBFT_A =	lib/libft/libft.a
+LIBX_A =	lib/minilibx-linux/mlx.a
 
 
 MANDATORY_SRCS = \
@@ -75,24 +75,29 @@ all : $(NAME)
 bonus:
 	make WITH_BONUS=1 all
 
-$(NAME) : $(OBJ) $(LIB_A)
+$(NAME) : $(OBJ) $(LIBFT_A) $(LIBX_A)
 	$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) $(INCLUDE) -o $(NAME)
 
-$(LIB_A) : $(LIB_DIR)
+$(LIBFT_A) : $(LIBFT_DIR)
+	make -C $<
+
+$(LIBX_A) : $(LIBX_DIR)
 	make -C $<
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $(INCLUDE) $< -o $@
 
 
-clean_lib: $(LIB_DIR)
+clean_libft: $(LIBFT_DIR)
 	make -C $< fclean
-	
+
+clean_libx:  $(LIBX_DIR)
+	make -C $< clean
 
 clean:
 	rm -rf $(BONUS_OBJS) $(MANDATORY_OBJS)
 
-fclean: clean clean_lib
+fclean: clean clean_libft clean_libx
 	rm -rf $(NAME)
 
 re: 
