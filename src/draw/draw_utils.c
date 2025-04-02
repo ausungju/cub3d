@@ -25,11 +25,6 @@ unsigned int	get_texture_color(int x, int y, int num, t_data *data)
 	t_tex_info	*tex;
 
 	tex = data->texture[num];
-	if (tex->num != 1)
-	{
-		return (*(unsigned int *)(tex->addr + (y + tex->y) * \
-			tex->line_length + x * (tex->bits_pixel / 8)));
-	}
 	return (*(unsigned int *)(tex->addr + y * tex->line_length + \
 		x * (tex->bits_pixel / 8)));
 }

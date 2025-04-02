@@ -82,10 +82,12 @@ void	set_parameter(char *line, t_data *data)
 void	file_parsing(char *file_path, t_data *data)
 {
 	char	*line;
+	char	*file_type;
 	int		fd;
 	int		i;
 
-	if (ft_strncmp(ft_strrchr(file_path, '.'), ".cub", 5) != 0)
+	file_type = ft_strrchr(file_path, '.');
+	if (file_type == NULL || ft_strncmp(file_type, ".cub", 5) != 0)
 		parse_error("invalid map file name");
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)

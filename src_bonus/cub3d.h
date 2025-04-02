@@ -23,8 +23,8 @@
 # include <sys/time.h>
 # include "type.h"
 # include "../lib/libft/libft.h"
-# include "../lib/mlx_linux/mlx.h"
-# include "../lib/mlx_linux/mlx_int.h"
+# include "../lib/minilibx-linux/mlx.h"
+# include "../lib/minilibx-linux/mlx_int.h"
 
 // draw
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
