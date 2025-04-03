@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongkim <seongkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 18:50:38 by seongkim          #+#    #+#             */
-/*   Updated: 2025/03/09 23:12:28 by seongkim         ###   ########.fr       */
+/*   Updated: 2025/04/03 19:43:29 by bohchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_fpoint	*get_player_point(t_fpoint *point, int scope, t_data *data)
 {
-	point->x = data->player.point.x * scope;
-	point->y = data->player.point.y * scope;
+	point->x = data->player.point.x * scope + 0.5;
+	point->y = data->player.point.y * scope + 0.5;
 	return (point);
 }
 
