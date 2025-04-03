@@ -6,7 +6,7 @@
 /*   By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 18:50:38 by seongkim          #+#    #+#             */
-/*   Updated: 2025/04/03 19:43:29 by bohchoi          ###   ########.fr       */
+/*   Updated: 2025/04/03 20:14:35 by bohchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_fpoint	*get_player_point(t_fpoint *point, int scope, t_data *data)
 {
-	point->x = data->player.point.x * scope + 0.5;
-	point->y = data->player.point.y * scope + 0.5;
+	point->x = data->player.point.x * scope + 0.001;
+	point->y = data->player.point.y * scope + 0.001;
 	return (point);
 }
 
