@@ -49,8 +49,7 @@ int	draw_character(t_data *data)
 
 void	set_map_pixel(int x, int y, t_data *data)
 {
-	if (data->map[y / WS][x / WS] == WALL || \
-		data->map[y / WS][x / WS] == ' ')
+	if (data->map[y / WS][x / WS] == WALL)
 		my_mlx_pixel_put(data, x + MG, y + MG, 0x222222);
 	else if (data->map[y / WS][x / WS] == PORTAL)
 		my_mlx_pixel_put(data, x + MG, y + MG, 0x9200D7);
@@ -58,7 +57,7 @@ void	set_map_pixel(int x, int y, t_data *data)
 		my_mlx_pixel_put(data, x + MG, y + MG, 0x492F17);
 	else if (data->map[y / WS][x / WS] == O_DR)
 		my_mlx_pixel_put(data, x + MG, y + MG, 0xA59500);
-	else
+	else if (data->map[y / WS][x / WS] == SPACE)
 		my_mlx_pixel_put(data, x + MG, y + MG, 0x000000);
 }
 

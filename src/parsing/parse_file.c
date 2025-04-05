@@ -28,8 +28,8 @@ void	set_and_verify_map(t_data *data)
 				if (data->player.char_dir)
 					parse_error("invalid map file");
 				data->player.char_dir = data->map[y][x];
-				data->player.point.x = x;
-				data->player.point.y = y;
+				data->player.point.x = (double)x + 0.5;
+				data->player.point.y = (double)y + 0.5;
 			}
 			++x;
 		}
@@ -37,7 +37,6 @@ void	set_and_verify_map(t_data *data)
 	}
 	if (data->player.char_dir == '\0')
 		parse_error("invalid map file");
-	set_map_size(data);
 	check_wall(data);
 }
 
@@ -65,6 +64,7 @@ void	set_map(int fd, t_data *data)
 	free(map_str);
 	if (data->map == NULL)
 		parse_error("ft_split() failed");
+	set_map_size(data);
 	set_and_verify_map(data);
 }
 

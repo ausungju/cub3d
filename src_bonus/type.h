@@ -23,6 +23,7 @@
 # define F				7
 # define C				8
 
+# define SPACE			'0'
 # define WALL			'1'
 # define PORTAL			'2'
 # define C_DR			'3'

@@ -54,6 +54,20 @@ char	*get_element(char **line)
 	return (res);
 }
 
+int	get_single_color(char *element)
+{
+	char	*tmp;
+	int		color;
+
+	color = ft_atoi(element);
+	tmp = ft_itoa(color);
+	if (ft_strncmp(element, tmp, ft_strlen(element) != 0) || \
+		color < 0 || color > 255)
+		parse_error("invalid map file");
+	free(tmp);
+	return (color);
+}
+
 int	check_character(char c)
 {
 	return (c == 'N' || c == 'S' || c == 'W' || c == 'E');

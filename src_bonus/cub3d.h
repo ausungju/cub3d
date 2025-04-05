@@ -37,6 +37,7 @@ void			draw_map(t_data *data);
 char			*gnl_pass_empty_line(int fd, int is_insert_nl);
 char			*pass_space(char *line);
 char			*get_element(char **line);
+int				get_single_color(char *element);
 int				check_character(char c);
 
 void			set_map_size(t_data *data);

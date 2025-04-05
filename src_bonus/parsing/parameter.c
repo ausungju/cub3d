@@ -16,6 +16,7 @@ int	select_parameter(char **line)
 {
 	int	id;
 
+	id = 0;
 	if (ft_strncmp(*line, "NO ", 3) == 0)
 		id = NO;
 	else if (ft_strncmp(*line, "SO ", 3) == 0)
@@ -53,7 +54,7 @@ int	get_color(char *line)
 		element = get_element(&line);
 		if (element == NULL)
 			parse_error("get_element() failed");
-		color += ft_atoi(element) << ((2 - i++) * 8);
+		color += get_single_color(element) << ((2 - i++) * 8);
 		free(element);
 	}
 	element = get_element(&line);
