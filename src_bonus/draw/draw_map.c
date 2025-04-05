@@ -57,7 +57,8 @@ void	set_map_pixel(int x, int y, t_data *data)
 		my_mlx_pixel_put(data, x + MG, y + MG, 0x492F17);
 	else if (data->map[y / WS][x / WS] == O_DR)
 		my_mlx_pixel_put(data, x + MG, y + MG, 0xA59500);
-	else if (data->map[y / WS][x / WS] == SPACE)
+	else if (data->map[y / WS][x / WS] == SPACE || \
+		check_character(data->map[y / WS][x / WS]))
 		my_mlx_pixel_put(data, x + MG, y + MG, 0x000000);
 }
 

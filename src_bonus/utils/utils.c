@@ -14,8 +14,8 @@
 
 t_fpoint	*get_player_point(t_fpoint *point, int scope, t_data *data)
 {
-	point->x = data->player.point.x * scope + 0.001;
-	point->y = data->player.point.y * scope + 0.001;
+	point->x = data->player.point.x * scope;
+	point->y = data->player.point.y * scope;
 	return (point);
 }
 

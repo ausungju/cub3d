@@ -27,8 +27,8 @@
 # define HEIGHT			900
 # define WS				7
 # define MG				10
-# define MOVE_SPEED		0.05f
-# define MOVE_CHECK		0.06f
+# define MOVE_SPEED		0.0511f
+# define MOVE_CHECK		0.0611f
 # define TEXTURE_SPEED	0.08f
 
 # define N_COLOR		0xFFA500

@@ -15,7 +15,7 @@
 int	get_front_space_num(char *str)
 {
 	int	x;
-	
+
 	x = 0;
 	while (str[x] && str[x] == ' ')
 		x++;
@@ -32,7 +32,8 @@ void	resizing_map(int remove_num, t_data *data)
 	i = 0;
 	while (i < y)
 	{
-		new_map_str = ft_substr(data->map[i], remove_num, ft_strlen(data->map[i]) + 1);
+		new_map_str = ft_substr(data->map[i], remove_num, \
+			ft_strlen(data->map[i]) + 1);
 		free(data->map[i]);
 		if (new_map_str == NULL)
 			parse_error("allocation fail");
