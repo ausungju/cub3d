@@ -30,7 +30,6 @@ int	re_draw(t_data *data)
 		draw_cam(data);
 		draw_map(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-		printf("%f %f\n",data->player.point.x, data->player.point.y);
 	}
 	else
 		mlx_put_image_to_window(data->mlx, data->win, data->pause_img, 0, 0);
