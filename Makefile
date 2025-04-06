@@ -6,12 +6,12 @@
 #    By: bohchoi <bohchoi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 03:10:13 by seongkim          #+#    #+#              #
-#    Updated: 2025/04/02 18:30:03 by bohchoi          ###   ########.fr        #
+#    Updated: 2025/04/06 17:34:35 by bohchoi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 LFLAGS = -Llib/minilibx-linux -lmlx -Llib/libft -lft -lXext -lX11 -lm -lz
 INCLUDE = -Ilib/minilibx-linux
@@ -21,8 +21,7 @@ LIBFT_DIR =	lib/libft
 LIBX_DIR =	lib/minilibx-linux
 
 LIBFT_A =	lib/libft/libft.a
-LIBX_A =	lib/minilibx-linux/mlx.a
-
+LIBX_A =	lib/minilibx-linux/libmlx_Linux.a
 
 MANDATORY_SRCS = \
 	src/draw/draw_cam.c			\
@@ -61,7 +60,6 @@ BONUS_SRCS = \
 MANDATORY_OBJS = $(patsubst %.c,%.o,$(MANDATORY_SRCS))
 BONUS_OBJS = $(patsubst %.c,%.o,$(BONUS_SRCS))
 
-
 ifdef WITH_BONUS
     OBJ = $(LIBFT_OBJS) $(BONUS_OBJS)
 else
@@ -86,7 +84,6 @@ $(LIBX_A) : $(LIBX_DIR)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $(INCLUDE) $< -o $@
-
 
 clean_libft: $(LIBFT_DIR)
 	make -C $< fclean

@@ -68,7 +68,6 @@ int				get_strarr_size(char **ptr);
 int				key_event_sleep(t_data *data);
 int				mouse_event_sleep(t_data *data);
 int				mouse_event(int key_code, int x, int y, t_data *data);
-int				mouse_move_event(int x, int y, t_data *data);
 int				re_draw(t_data *data);
 int				ws_envet(int key_code, t_data *data);
 int				key_event(int key_code, t_data *data);

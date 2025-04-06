@@ -68,14 +68,3 @@ int	mouse_event(int key_code, int x, int y, t_data *data)
 	data->pause_status = !data->pause_status;
 	return (0);
 }
-
-int	mouse_move_event(int x, int y, t_data *data)
-{
-	++y;
-	if (data->pause_status)
-		return (0);
-	rotate(&data->player.dir, (x - WIDTH / 2) * MOUSE_SPEED);
-	rotate(&data->player.plane, (x - WIDTH / 2) * MOUSE_SPEED);
-	mlx_mouse_move(data->mlx, data->win, WIDTH / 2, HEIGHT / 2);
-	return (0);
-}
